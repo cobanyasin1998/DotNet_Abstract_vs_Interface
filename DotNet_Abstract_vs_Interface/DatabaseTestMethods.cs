@@ -3,8 +3,10 @@
 namespace DotNet_Abstract_vs_Interface
 {
 
-    public class BaseDb
+    public abstract class BaseDb
     {
+        public abstract string GetDbVersion();
+        public abstract string GenerateSql(int id);
         public DataTable ExecuteSql(string sql)
         {
             return new DataTable();
@@ -13,19 +15,29 @@ namespace DotNet_Abstract_vs_Interface
 
     public class SqlServerDb:BaseDb
     {
-        public string GetDbVersion() => "SqlServer 2012";
+        public override string GetDbVersion() => "SqlServer 2012";
 
-        public string GenerateSql(int id)
+        public override string GenerateSql(int id)
         {
             return $"SELECT * FROM USERS WITH(NOLOCK) WHERE ID = {id}";
         }
     }
     public class OracleDb : BaseDb
     {
-        public string GetDbVersion() => "Oracle 18c";
-        public string GenerateSql(int id)
+        public override string GetDbVersion() => "Oracle 18c";
+        public override string GenerateSql(int id)
         {
             return $"SELECT * FROM USERS WHERE USER_ID = {id}";
         }
+    }
+    public class MySqlDb : BaseDb
+    {
+        public override string GenerateSql(int id)
+        {
+            return $"SELECT * FROM USERS WHERE US_ID = {id}";
+        }
+
+        public override string GetDbVersion() => "MySql Database";
+     
     }
 }
