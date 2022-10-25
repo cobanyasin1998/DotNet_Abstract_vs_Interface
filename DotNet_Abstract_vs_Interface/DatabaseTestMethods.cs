@@ -5,6 +5,11 @@ namespace DotNet_Abstract_vs_Interface
 
     public abstract class BaseDb
     {
+        public BaseDb()
+        {
+            //Abstract class yapıcı metod kullanabilir
+        }
+
         public abstract string GetDbVersion();
         public abstract string GenerateSql(int id);
         public DataTable ExecuteSql(string sql)

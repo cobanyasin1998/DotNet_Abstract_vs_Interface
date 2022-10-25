@@ -1,5 +1,11 @@
-﻿namespace DotNet_Abstract_vs_Interface
+﻿using System;
+
+namespace DotNet_Abstract_vs_Interface
 {
+    public class VehicleClass
+    {
+
+    }
     //c#8 den sonra interface'lerde statik kod yazabiliriz.
     public interface IVehicle
     {
@@ -20,27 +26,27 @@
         void Soar();
     }
 
-    public class Car : IVehicle
+    public class Car : BaseVehicle
     {
-        public void Go()
-        {
-            throw new System.NotImplementedException();
-        }
 
-        public void Stop()
-        {
-            throw new System.NotImplementedException();
-        }
     }
-    public class Bike : IVehicle, IRideable
-    {
-        public void Go()
-        {
-            throw new System.NotImplementedException();
-        }
 
+    public class Bike : BaseVehicle, IRideable//Birden fazla interface kullanılabilirken birden fazla abstract kullanılamaz. //
+    {
         public void Ride()
         {
+            Console.WriteLine("Bike is riding...");
+        }
+    }
+    public class Plane : IVehicle, IFlyable
+    {
+        public void Go()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void Soar()
+        {
             throw new System.NotImplementedException();
         }
 
@@ -49,4 +55,25 @@
             throw new System.NotImplementedException();
         }
     }
+
+
+    //Abstract
+
+
+    public abstract class BaseVehicle
+        : IVehicle
+    {
+        public void Go()
+        {
+            Console.WriteLine("Vehicle is going...");
+        }
+
+        public void Stop()
+        {
+            Console.WriteLine("Vehicle is stopped...");
+        }
+    }
+
+
+
 }
