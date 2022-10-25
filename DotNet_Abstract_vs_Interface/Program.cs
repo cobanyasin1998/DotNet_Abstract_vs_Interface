@@ -6,7 +6,10 @@ namespace DotNet_Abstract_vs_Interface
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+
+            //Interface -> Aggreement - CanAbleTo
+
+            
         }
     }
 }
